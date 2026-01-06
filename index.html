@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目主页 | 武汉市酒店空间格局与演变可视分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 仅保留浮动动画，删除了背景图片相关设置 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* 玻璃拟态增强 - 调整为适应纯色背景 */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7); /* 稍微加深背景色 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white h-screen overflow-hidden relative selection:bg-cyan-500 selection:text-white">
+
+    <nav class="relative z-10 flex justify-between items-center px-10 py-6 border-b border-gray-800">
+        <div class="text-2xl font-bold tracking-wider text-cyan-400">CAS-LREIS <span class="text-gray-500 text-sm font-normal ml-2">| 互联网地图学课程作业</span></div>
+        <div class="text-gray-500 text-xs tracking-widest uppercase">Urban Spatial Analysis Lab</div>
+    </nav>
+
+    <main class="relative z-10 container mx-auto px-6 flex flex-col md:flex-row items-center h-[80vh]">
+        
+        <div class="md:w-3/5 space-y-8 pr-10">
+            <div class="flex space-x-2">
+                <span class="px-3 py-1 bg-gray-800 text-cyan-400 rounded text-xs border border-gray-700">Point of Interest (POI)</span>
+                <span class="px-3 py-1 bg-gray-800 text-blue-400 rounded text-xs border border-gray-700">Kernel Density Estimation</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight font-sans tracking-tight">
+                武汉市酒店业<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">空间格局演变</span> 可视分析
+            </h1>
+            
+            <p class="text-gray-400 text-base leading-7 glass-card p-6 rounded-xl border-l-4 border-cyan-600">
+                本平台基于多期城市兴趣点（POI）数据，集成<b>核密度估计（KDE）</b>与<b>时空立方体</b>模型，对武汉市酒店服务设施的空间分布特征及其演变规律进行动态模拟。
+                <br><br>
+                系统通过多维视图（热力图、三维格网、聚类图谱），揭示了城市服务功能从<b>“单中心集聚”</b>向<b>“多中心扩散”</b>转型的时空过程，直观呈现了城市内部空间结构的重构特征。
+            </p>
+
+            <div class="pt-2">
+                <a href="http://wuhan.qbrer.online" target="_blank" 
+                   class="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-cyan-700 rounded-lg hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-600 shadow-lg">
+                    <span class="mr-2">启动地理分析系统</span>
+                    <svg class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hidden md:block md:w-2/5 relative h-full">
+            
+            <div class="absolute right-0 top-1/4 w-72 p-5 glass-card rounded-2xl animate-float" style="animation-delay: 0s;">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-cyan-500 text-xs font-bold uppercase tracking-wider">Total POI Records</h3>
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                </div>
+                <p class="text-4xl font-mono font-bold text-white">24,839</p>
+                <p class="text-xs text-gray-500 mt-1">涵盖 2012-2022 十年观测数据</p>
+            </div>
+
+            <div class="absolute right-12 top-1/2 w-64 p-5 glass-card rounded-2xl animate-float" style="animation-delay: 1.5s;">
+                <h3 class="text-blue-500 text-xs font-bold uppercase tracking-wider mb-3">Analysis Metrics</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">集聚程度 (NNI)</span>
+                        <span class="text-white font-mono">0.42 (Clustered)</span>
+                    </li>
+                    <li class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">空间置信度</span>
+                        <span class="text-white font-mono">99%</span>
+                    </li>
+                    <div class="w-full bg-gray-700 h-1 mt-2 rounded-full">
+                        <div class="bg-blue-600 h-full w-4/5"></div>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="absolute right-0 bottom-1/4 w-72 p-5 glass-card rounded-2xl animate-float" style="animation-delay: 2.5s;">
+                <h3 class="text-purple-500 text-xs font-bold uppercase tracking-wider mb-2">High-Density Zones</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">江汉路商圈</span>
+                    <span class="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">光谷广场</span>
+                    <span class="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">楚河汉街</span>
+                    <span class="px-2 py-1 bg-gray-800 rounded text-xs text-gray-400">街道口</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="absolute bottom-4 w-full text-center text-gray-600 text-xs z-10">
+        &copy; 2025 PhD Candidate Work. Data Source: AutoNavi Map POI.
+    </footer>
+</body>
+</html>
